@@ -23,25 +23,29 @@ class File implements FileInterface
 
     const STATUS_RENAMED  = 'R';
 
+    const STATUS_DELETED = 'D';
+
+    const STATUS_UNSTAGED = '??';
+
     /**
      * The full path to the file.
      */
-    private $filePath;
+    protected $filePath;
 
     /**
      * The files status.
      */
-    private $fileStatus;
+    protected $fileStatus;
 
     /**
      * The projects base directory.
      */
-    private $projectPath;
+    protected $projectPath;
 
     /**
      * The cached location of the file.
      */
-    private $cachedPath;
+    protected $cachedPath;
 
     /**
      * Initializes a new instance of the File class.
@@ -155,6 +159,10 @@ class File implements FileInterface
                 return 'modified';
             case 'R':
                 return 'renamed';
+            case 'D':
+                return 'deleted';
+            case '??':
+                return 'modified changes but not yet staged';
             default:
                 throw new \UnexpectedValueException("Unknown file status: $this->fileStatus.");
         }
