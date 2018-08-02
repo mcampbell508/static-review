@@ -1,5 +1,5 @@
 {
-    "name": "sjparkinson/static-review",
+    "name": "mcampbell508/static-review",
 
     "description": "An extendable framework for version control hooks.",
 
@@ -15,8 +15,8 @@
     ],
 
     "support": {
-        "source": "https://github.com/sjparkinson/static-review",
-        "issues": "https://github.com/sjparkinson/static-review/issues"
+        "source": "https://github.com/mcampbell508/static-review",
+        "issues": "https://github.com/mcampbell508/static-review/issues"
     },
 
     "autoload": {
