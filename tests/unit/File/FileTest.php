@@ -24,6 +24,7 @@ class FileTest extends TestCase
 
     protected $projectPath;
 
+    /** @var File $file */
     protected $file;
 
     public function setUp()
