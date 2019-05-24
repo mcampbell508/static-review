@@ -46,9 +46,18 @@ class FileTest extends TestCase
 
     public function testGetRelativePath()
     {
-        $expected = str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
+        $filePath = "/app/example/app/TestFile.php";
+        $basePath = "/app";
+        $file = new File("M", $filePath, $basePath);
 
-        $this->assertSame($expected, $this->file->getRelativePath());
+        $this->assertEquals("example/app/TestFile.php", $file->getRelativePath());
+
+        //it can also handle when a trailing slash is present on the base path
+        $filePath = "/app/example2/app/TestFile2.php";
+        $basePath = "/app/";
+        $file = new File("A", $filePath, $basePath);
+
+        $this->assertEquals("example2/app/TestFile2.php", $file->getRelativePath());
     }
 
     public function testGetFullPathWithNoCachedPath()
