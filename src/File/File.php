@@ -61,7 +61,7 @@ class File implements FileInterface
     ) {
         $this->fileStatus  = $fileStatus;
         $this->filePath    = $filePath;
-        $this->projectPath = $projectPath;
+        $this->projectPath = rtrim($projectPath, DIRECTORY_SEPARATOR);
     }
 
     /**
