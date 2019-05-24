@@ -61,7 +61,7 @@ class File implements FileInterface
     ) {
         $this->fileStatus  = $fileStatus;
         $this->filePath    = $filePath;
-        $this->projectPath = $projectPath;
+        $this->projectPath = rtrim($projectPath, DIRECTORY_SEPARATOR);
     }
 
     /**
@@ -81,7 +81,11 @@ class File implements FileInterface
      */
     public function getRelativePath()
     {
-        return str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
+        $projectPath = $this->projectPath . DIRECTORY_SEPARATOR;
+
+        $relativePath = substr_replace($this->filePath, '', 0, strlen($projectPath));
+
+        return ltrim($relativePath, DIRECTORY_SEPARATOR);
     }
 
     /**
