@@ -133,4 +133,12 @@ class FileTest extends TestCase
     {
         $this->assertTrue(strpos($this->file->getMimeType(), 'php') !== false);
     }
+
+    public function testgetFilePathBeforeRename()
+    {
+        $this->assertEquals(
+            "/tmp/old-file-name.txt",
+            (new File("R", $this->filePath, $this->projectPath, "/tmp/old-file-name.txt"))->getFilePathBeforeRename()
+        );
+    }
 }

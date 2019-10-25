@@ -48,6 +48,11 @@ class File implements FileInterface
     protected $cachedPath;
 
     /**
+     * The full path to a renamed file.
+     */
+    protected $renamedFilePath;
+
+    /**
      * Initializes a new instance of the File class.
      *
      * @param string $fileStatus
@@ -57,11 +62,13 @@ class File implements FileInterface
     public function __construct(
         $fileStatus,
         $filePath,
-        $projectPath
+        $projectPath,
+        $renamedFilePath = null
     ) {
         $this->fileStatus  = $fileStatus;
         $this->filePath    = $filePath;
         $this->projectPath = rtrim($projectPath, DIRECTORY_SEPARATOR);
+        $this->renamedFilePath = $renamedFilePath;
     }
 
     /**
@@ -196,5 +203,10 @@ class File implements FileInterface
     public function getName()
     {
         return $this->getRelativePath();
+    }
+
+    public function getFilePathBeforeRename()
+    {
+        return $this->renamedFilePath;
     }
 }
